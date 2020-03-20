@@ -10,6 +10,7 @@ namespace Tasc
 
         public float prevAngle;
         public float angle;
+        public Transform pivotPoint;
         const string variableName = "wheelAngle";
         public bool didCW;
         public bool didCCW;
@@ -74,9 +75,7 @@ namespace Tasc
             if (givenFromDesktop)
             {
                 SetAngle(angle + controlVector.x);
-
                 terminus.transform.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
-
                 Log();
             }        
 

@@ -5,7 +5,6 @@ using Valve.VR.InteractionSystem;
 
 namespace Tasc
 {
-    [RequireComponent(typeof(Interactable))]
     [RequireComponent(typeof(Tasc.Wheel))]
     public class InteractableWheel : FeedbackSteamVR
     {
@@ -17,6 +16,11 @@ namespace Tasc
             base.Awake();
             terminus = GetComponent<Wheel>();
             circularDrive = GetComponent<CircularDrive>();
+
+            pivotPoint = GameObject.Find("pivotPoint_wheel").transform;
+
+            (terminus as Wheel).pivotPoint = pivotPoint;
+
         }
 
         public override void Proceed(Hand hand)

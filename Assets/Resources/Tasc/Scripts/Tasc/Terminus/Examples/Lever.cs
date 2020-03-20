@@ -42,10 +42,12 @@ namespace Tasc
             if (givenFromDesktop)
             {
                 angle += controlVector.y;
+                
                 if (angle > -87 && angle < 87)
                 {
-                    terminus.transform.position = pivotPoint.transform.position + (Quaternion.AngleAxis(angle - 90, Vector3.right)) * Vector3.forward * length;
-                    terminus.transform.rotation = Quaternion.AngleAxis(angle, Vector3.right) * Quaternion.AngleAxis(90, Vector3.forward);
+                    // modify rotation axis of the lever handle
+                    terminus.transform.position = pivotPoint.transform.position + (Quaternion.AngleAxis(angle - 90, Vector3.forward)) * Vector3.down * length;
+                    terminus.transform.rotation = Quaternion.AngleAxis(360-angle, -Vector3.forward) * Quaternion.AngleAxis(90, Vector3.left) * Quaternion.AngleAxis(180, Vector3.up);
                 }
                 gear = getGear(angle);
                 Send();
@@ -59,8 +61,10 @@ namespace Tasc
                 angle = -Vector3.Angle(projected, Vector3.forward) + 90;
                 if (angle > -87 && angle < 87)
                 {
+                    // modify rotation axis of the lever handle
                     terminus.transform.position = pivotPoint.transform.position + projected.normalized * length;
-                    terminus.transform.rotation = Quaternion.AngleAxis(angle, Vector3.right) * Quaternion.AngleAxis(90, Vector3.forward);
+                    //terminus.transform.rotation = Quaternion.AngleAxis(angle, Vector3.right) * Quaternion.AngleAxis(90, Vector3.forward); // origin version
+                    terminus.transform.rotation = Quaternion.AngleAxis(360 - angle, -Vector3.forward) * Quaternion.AngleAxis(90, Vector3.left) * Quaternion.AngleAxis(180, Vector3.up);
                 }
 
                 gear = getGear(angle);

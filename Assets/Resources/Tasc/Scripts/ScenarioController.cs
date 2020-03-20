@@ -49,7 +49,7 @@ public class ScenarioController : MonoBehaviour
 
         Joystick joystick = FindObjectsOfType<Joystick>()[0];
         Wheel wheel = FindObjectsOfType<Wheel>()[0];
-        Button correctButton = GameObject.Find("Grab button red").GetComponent<Button>();
+        Button correctButton = GameObject.Find("button_red").GetComponent<Button>();
         Lever lever = FindObjectsOfType<Lever>()[0];
 
         Task task1 = new Task("Task1", "");

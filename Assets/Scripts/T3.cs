@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tasc;
 
-public class T1 : MonoBehaviour
+public class T3 : MonoBehaviour
 {
     bool isTerminusExported = false;
     bool isActionExported = false;
-    Scenario scenario = new Scenario("T1", "A user is required to memorize a series of operations.");
+    Scenario scenario = new Scenario("T3", "A user is required to memorize a series of operations.");
 
     public List<Interface> interfaces;
     public Actor actor;
@@ -57,33 +57,41 @@ public class T1 : MonoBehaviour
         Button buttonBlue = GameObject.Find("button_blue").GetComponent<Button>();
         Lever lever = FindObjectsOfType<Lever>()[0];
 
+        Task wheel_ccw = new Task("wheel_ccw", "");
+        wheel_ccw.instruction = new Instruction(wheel_ccw.name);
+        wheel_ccw.instruction.SetContentWithContext("Stage 1", Information.Context.Title);
+        wheel_ccw.instruction.SetContentWithContext("As a fifth step, turn the wheel counterclockwise one turn.", Information.Context.Narration);
+        wheel_ccw.instruction.SetContentWithContext("As a fifth step, turn the wheel counterclockwise one turn.", Information.Context.Description);
+        wheel_ccw.exit = new Condition(new BoolVariableState(wheel, "didCCW", true), Condition.RelationalOperator.Equal);
+        scenario.Add(wheel_ccw);
+
         Task lever_3 = new Task("lever_3", "");
         lever_3.instruction = new Instruction(lever_3.name);
-        lever_3.instruction.SetContentWithContext("Stage 1", Information.Context.Title);
+        lever_3.instruction.SetContentWithContext("Stage 2", Information.Context.Title);
         lever_3.instruction.SetContentWithContext("", Information.Context.Narration);
         lever_3.instruction.SetContentWithContext("", Information.Context.Description);
         lever_3.exit = new Condition(new IntVariableState(lever, "gearValue", 3), Condition.RelationalOperator.Equal);
         scenario.Add(lever_3);
 
-        Task button_purple = new Task("button_purple", "");
-        button_purple.instruction = new Instruction(button_purple.name);
-        button_purple.instruction.SetContentWithContext("Stage 2", Information.Context.Title);
-        button_purple.instruction.SetContentWithContext("", Information.Context.Narration);
-        button_purple.instruction.SetContentWithContext("", Information.Context.Description);
-        button_purple.exit = new Condition(new BoolVariableState(buttonPurple, "isPushed", true), Condition.RelationalOperator.Equal);
-        scenario.Add(button_purple);
+        Task button_yellow = new Task("button_yellow", "");
+        button_yellow.instruction = new Instruction(button_yellow.name);
+        button_yellow.instruction.SetContentWithContext("Stage 3", Information.Context.Title);
+        button_yellow.instruction.SetContentWithContext("", Information.Context.Narration);
+        button_yellow.instruction.SetContentWithContext("", Information.Context.Description);
+        button_yellow.exit = new Condition(new BoolVariableState(buttonYellow, "isPushed", true), Condition.RelationalOperator.Equal);
+        scenario.Add(button_yellow);
 
-        Task joystick_e = new Task("joystick_e", "");
-        joystick_e.instruction = new Instruction(joystick_e.name);
-        joystick_e.instruction.SetContentWithContext("Stage 3", Information.Context.Title);
-        joystick_e.instruction.SetContentWithContext("", Information.Context.Narration);
-        joystick_e.instruction.SetContentWithContext("", Information.Context.Description);
-        joystick_e.exit = new Condition(new VariableDistanceState(new VectorVariableState(joystick, "leverCoord", new Vector3(20, 0, 0)), 10.0f), Condition.RelationalOperator.SmallerOrEqual);
-        scenario.Add(joystick_e);
+        Task joystick_sw = new Task("joystick_sw", "");
+        joystick_sw.instruction = new Instruction(joystick_sw.name);
+        joystick_sw.instruction.SetContentWithContext("Stage 4", Information.Context.Title);
+        joystick_sw.instruction.SetContentWithContext("", Information.Context.Narration);
+        joystick_sw.instruction.SetContentWithContext("", Information.Context.Description);
+        joystick_sw.exit = new Condition(new VariableDistanceState(new VectorVariableState(joystick, "leverCoord", new Vector3(-20, -20, 0)), 10.0f), Condition.RelationalOperator.SmallerOrEqual);
+        scenario.Add(joystick_sw);
 
         Task lever_1 = new Task("lever_1", "");
         lever_1.instruction = new Instruction(lever_1.name);
-        lever_1.instruction.SetContentWithContext("Stage 4", Information.Context.Title);
+        lever_1.instruction.SetContentWithContext("Stage 5", Information.Context.Title);
         lever_1.instruction.SetContentWithContext("", Information.Context.Narration);
         lever_1.instruction.SetContentWithContext("", Information.Context.Description);
         lever_1.exit = new Condition(new IntVariableState(lever, "gearValue", 1), Condition.RelationalOperator.Equal);
@@ -91,35 +99,27 @@ public class T1 : MonoBehaviour
 
         Task wheel_cw = new Task("wheel_cw", "");
         wheel_cw.instruction = new Instruction(wheel_cw.name);
-        wheel_cw.instruction.SetContentWithContext("Stage 5", Information.Context.Title);
+        wheel_cw.instruction.SetContentWithContext("Stage 6", Information.Context.Title);
         wheel_cw.instruction.SetContentWithContext("turn the wheel clockwise one turn.", Information.Context.Narration);
         wheel_cw.instruction.SetContentWithContext("turn the wheel clockwise one turn.", Information.Context.Description);
         wheel_cw.exit = new Condition(new BoolVariableState(wheel, "didCW", true), Condition.RelationalOperator.Equal);
         scenario.Add(wheel_cw);
 
-        Task button_green = new Task("button_green", "");
-        button_green.instruction = new Instruction(button_green.name);
-        button_green.instruction.SetContentWithContext("Stage 6", Information.Context.Title);
-        button_green.instruction.SetContentWithContext("", Information.Context.Narration);
-        button_green.instruction.SetContentWithContext("", Information.Context.Description);
-        button_green.exit = new Condition(new BoolVariableState(buttonGreen, "isPushed", true), Condition.RelationalOperator.Equal);
-        scenario.Add(button_green);
+        Task joystick_w = new Task("joystick_w", "");
+        joystick_w.instruction = new Instruction(joystick_w.name);
+        joystick_w.instruction.SetContentWithContext("Stage 7", Information.Context.Title);
+        joystick_w.instruction.SetContentWithContext("", Information.Context.Narration);
+        joystick_w.instruction.SetContentWithContext("", Information.Context.Description);
+        joystick_w.exit = new Condition(new VariableDistanceState(new VectorVariableState(joystick, "leverCoord", new Vector3(-20, 0, 0)), 10.0f), Condition.RelationalOperator.SmallerOrEqual);
+        scenario.Add(joystick_w);
 
-        Task joystick_nw = new Task("joystick_nw", "");
-        joystick_nw.instruction = new Instruction(joystick_nw.name);
-        joystick_nw.instruction.SetContentWithContext("Stage 7", Information.Context.Title);
-        joystick_nw.instruction.SetContentWithContext("", Information.Context.Narration);
-        joystick_nw.instruction.SetContentWithContext("", Information.Context.Description);
-        joystick_nw.exit = new Condition(new VariableDistanceState(new VectorVariableState(joystick, "leverCoord", new Vector3(-20, 20, 0)), 10.0f), Condition.RelationalOperator.SmallerOrEqual);
-        scenario.Add(joystick_nw);
-
-        Task wheel_ccw = new Task("wheel_ccw", "");
-        wheel_ccw.instruction = new Instruction(wheel_ccw.name);
-        wheel_ccw.instruction.SetContentWithContext("Stage 8", Information.Context.Title);
-        wheel_ccw.instruction.SetContentWithContext("turn the wheel counterclockwise one turn.", Information.Context.Narration);
-        wheel_ccw.instruction.SetContentWithContext("turn the wheel counterclockwise one turn.", Information.Context.Description);
-        wheel_ccw.exit = new Condition(new BoolVariableState(wheel, "didCCW", true), Condition.RelationalOperator.Equal);
-        scenario.Add(wheel_ccw);
+        Task button_orange = new Task("button_orange", "");
+        button_orange.instruction = new Instruction(button_orange.name);
+        button_orange.instruction.SetContentWithContext("Stage 8", Information.Context.Title);
+        button_orange.instruction.SetContentWithContext("", Information.Context.Narration);
+        button_orange.instruction.SetContentWithContext("", Information.Context.Description);
+        button_orange.exit = new Condition(new BoolVariableState(buttonOrange, "isPushed", true), Condition.RelationalOperator.Equal);
+        scenario.Add(button_orange);
 
         Task ending = new Task("Finish", "");
         ending.instruction = new Instruction(ending.name);

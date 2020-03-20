@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 84722195}
   - component: {fileID: 84722196}
   m_Layer: 0
-  m_Name: Grab button red
+  m_Name: button_yellow
   m_TagString: Button_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 264286760}
   - component: {fileID: 264286761}
   m_Layer: 0
-  m_Name: Grab button blue
+  m_Name: button_red
   m_TagString: Button_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3761,7 +3761,7 @@ GameObject:
   - component: {fileID: 777900988}
   - component: {fileID: 777900989}
   m_Layer: 0
-  m_Name: Idle button up
+  m_Name: button_purple
   m_TagString: Button_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7259,7 +7259,7 @@ GameObject:
   - component: {fileID: 1556664543}
   - component: {fileID: 1556664544}
   m_Layer: 0
-  m_Name: Release button red
+  m_Name: button_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7398,7 +7398,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c5ea49d3ae32c014893c8f0156cb173e, type: 2}
+  - {fileID: 2100000, guid: ac650b6a76c3a154e91b395d39258b97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7442,7 +7442,7 @@ GameObject:
   - component: {fileID: 1560548815}
   - component: {fileID: 1560548816}
   m_Layer: 0
-  m_Name: Release button blue
+  m_Name: button_green
   m_TagString: Button_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8456,7 +8456,7 @@ GameObject:
   - component: {fileID: 1843604553}
   - component: {fileID: 1843604554}
   m_Layer: 0
-  m_Name: Idle button down
+  m_Name: button_orange
   m_TagString: Button_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

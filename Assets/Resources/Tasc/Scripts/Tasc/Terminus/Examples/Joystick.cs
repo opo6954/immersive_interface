@@ -66,14 +66,8 @@ namespace Tasc
                 float angleY = Vector3.Angle(projected, Vector3.right) - 90;
                 if (angleX > -87 && angleX < 87 && angleY > -87 && angleY < 87)
                 {
-                    // terminus.transform.position = pivotPoint.transform.position + projected.normalized * leverLength;
+                    terminus.transform.position = pivotPoint.transform.position + projected.normalized * leverLength;
                     terminus.transform.rotation = Quaternion.AngleAxis(angleX, Vector3.right) * Quaternion.AngleAxis(angleY, Vector3.forward);
-
-                    // modify rotation method(Not tested in VR)
-                    terminus.transform.RotateAround(pivotPoint.position, Vector3.right, angleX);
-                    terminus.transform.RotateAround(pivotPoint.position, Vector3.forward, angleY);
-
-                    //transform.rotation = Quaternion.AngleAxis(angle, Vector3.right);
                 }
                 value = new Vector3(-angleY, angleX);
                 Send();

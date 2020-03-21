@@ -6,8 +6,6 @@ using Tasc;
 
 public class T2 : MonoBehaviour
 {
-    bool isTerminusExported = false;
-    bool isActionExported = false;
     Scenario scenario = new Scenario("T2", "A user is required to memorize a series of operations.");
 
     public List<Interface> interfaces;

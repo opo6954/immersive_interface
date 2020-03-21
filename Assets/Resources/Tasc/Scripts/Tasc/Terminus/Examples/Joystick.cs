@@ -36,13 +36,13 @@ namespace Tasc
             }
         }
 
-        public override Transform Control(Transform terminus, Vector3 controlVector, Quaternion controlRotation, bool givenFromDesktop = false) {
+        public override Transform Control(Transform terminus, Vector3 contactPoint, Quaternion controlRotation, bool givenFromDesktop = false) {
             if (givenFromDesktop)
             {
                 //value += new Vector3(controlVector.x, controlVector.y, 0);
-                Vector3 valueRotate = new Vector3(controlVector.x, controlVector.y, 0);
+                Vector3 valueRotate = new Vector3(contactPoint.x, contactPoint.y, 0);
 
-                value += new Vector3(controlVector.x, controlVector.y, 0);
+                value += new Vector3(contactPoint.x, contactPoint.y, 0);
                 
                 if (value.x > -87 && value.x < 87 && value.y > -87 && value.y < 87 )
                 {
@@ -60,7 +60,7 @@ namespace Tasc
             }
             else
             {
-                Vector3 projected = (controlVector - pivotPoint.transform.position);
+                Vector3 projected = (contactPoint - pivotPoint.transform.position);
                 //Debug.Log("projected = [" + projected.x + ", " + projected.y + ", " + projected.z + "]");
                 float angleX = -Vector3.Angle(projected, Vector3.forward) + 90;
                 float angleY = Vector3.Angle(projected, Vector3.right) - 90;

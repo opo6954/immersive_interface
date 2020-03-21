@@ -51,7 +51,7 @@ namespace Tasc
             name = transform.name;
         }
 
-        public virtual Transform Control(Transform terminus, Vector3 controlVector, Quaternion controlRotation, bool givenFromDesktop = false)
+        public virtual Transform Control(Transform terminus, Vector3 contactPoint, Quaternion controlRotation, bool givenFromDesktop = false)
         {
             return null;
         }

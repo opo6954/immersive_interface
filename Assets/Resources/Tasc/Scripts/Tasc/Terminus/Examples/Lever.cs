@@ -37,11 +37,11 @@ namespace Tasc
             length = givenLength;
         }
 
-        public override Transform Control(Transform terminus, Vector3 controlVector, Quaternion controlRotation, bool givenFromDesktop = false)
+        public override Transform Control(Transform terminus, Vector3 contactPoint, Quaternion controlRotation, bool givenFromDesktop = false)
         {
             if (givenFromDesktop)
             {
-                angle -= controlVector.y;
+                angle -= contactPoint.y;
                 
                 if (angle > -87 && angle < 87)
                 {
@@ -56,7 +56,7 @@ namespace Tasc
             }
             else
             {
-                Vector3 projected = (controlVector - pivotPoint.transform.position);
+                Vector3 projected = (contactPoint - pivotPoint.transform.position);
                 projected.x = 0;
                 angle = -Vector3.Angle(projected, Vector3.forward) + 90;
                 if (angle > -87 && angle < 87)

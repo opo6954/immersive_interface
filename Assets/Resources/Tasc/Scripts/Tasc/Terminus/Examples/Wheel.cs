@@ -70,11 +70,11 @@ namespace Tasc
             return base.ToString() + ": Value (" + angle + ")";
         }
 
-        public override Transform Control(Transform terminus, Vector3 controlVector, Quaternion controlRotation, bool givenFromDesktop = false)
+        public override Transform Control(Transform terminus, Vector3 contactPoint, Quaternion controlRotation, bool givenFromDesktop = false)
         {
             if (givenFromDesktop)
             {
-                SetAngle(angle + controlVector.x);
+                SetAngle(angle + contactPoint.x);
                 terminus.transform.rotation = Quaternion.AngleAxis(-angle, Vector3.up);
                 Log();
             }        

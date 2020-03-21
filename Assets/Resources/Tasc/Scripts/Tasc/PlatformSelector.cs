@@ -18,6 +18,7 @@ namespace Tasc
         private void OnValidate()
         {
             PlatformSelector.chosenPlatform = currentPlatform;
+
             if(chosenPlatform == Platform.Desktop){
                 Debug.Log("VR setting is off.");
                 XRSettings.enabled = false;

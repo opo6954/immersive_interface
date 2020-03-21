@@ -57,14 +57,16 @@ namespace Tasc
             else
             {
                 Vector3 projected = (contactPoint - pivotPoint.transform.position);
-                projected.x = 0;
-                angle = -Vector3.Angle(projected, Vector3.forward) + 90;
+                projected.z = 0;
+                angle = -Vector3.Angle(projected, Vector3.right) + 90;
+
+                
                 if (angle > -87 && angle < 87)
                 {
                     // modify rotation axis of the lever handle
                     terminus.transform.position = pivotPoint.transform.position + projected.normalized * length;
                     //terminus.transform.rotation = Quaternion.AngleAxis(angle, Vector3.right) * Quaternion.AngleAxis(90, Vector3.forward); // origin version
-                    terminus.transform.rotation = Quaternion.AngleAxis(360 - angle, -Vector3.forward) * Quaternion.AngleAxis(90, Vector3.left) * Quaternion.AngleAxis(180, Vector3.up);
+                    terminus.transform.rotation = Quaternion.AngleAxis(90-angle, Vector3.forward) * Quaternion.AngleAxis(90, Vector3.left);
                 }
 
                 gear = getGear(angle);

@@ -10,6 +10,7 @@ public class motionPlayer : MonoBehaviour
     public Transform Joystick;
     public Transform[] Button;
     public TextMesh Button_UI;
+    public Transform fakeHand;
 
     List<int> timeIdxList;
     List<float> timevalueList;
@@ -122,7 +123,19 @@ public class motionPlayer : MonoBehaviour
                 float joyRotZ = float.Parse(textSplit[15].TrimEnd(')'));
 
                 joyRotList.Add(new Vector3(joyRotX, joyRotY, joyRotZ));
-           
+
+
+                float handPosX = float.Parse(textSplit[16].TrimStart('('));
+                float handPosY = float.Parse(textSplit[17].Trim());
+                float handPosZ = float.Parse(textSplit[18].TrimEnd(')'));
+
+                handPosList.Add(new Vector3(handPosX, handPosY, handPosZ));
+
+                float handRotX = float.Parse(textSplit[19].TrimStart('('));
+                float handRotY = float.Parse(textSplit[20].Trim());
+                float handRotZ = float.Parse(textSplit[21].TrimEnd(')'));
+
+                handRotList.Add(new Vector3(handRotX, handRotY, handRotZ));
             }
         }
         else
@@ -168,6 +181,12 @@ public class motionPlayer : MonoBehaviour
         Wheel.rotation = Quaternion.Euler(prevRot);
     }
 
+    void setHandTransform(Vector3 pos, Vector3 rot)
+    {
+        fakeHand.position = pos;
+        fakeHand.rotation = Quaternion.Euler(rot);
+    }
+
     // Update is called once per frame
     private void FixedUpdate()
     {
@@ -175,6 +194,7 @@ public class motionPlayer : MonoBehaviour
         setButtonPressed(buttonPressedIdxList[currTimeSlotId]);
         setJoystickTransform(joyPosList[currTimeSlotId], joyRotList[currTimeSlotId]);
         setWheelTransform(wheelRotYList[currTimeSlotId]);
+        setHandTransform(handPosList[currTimeSlotId], handRotList[currTimeSlotId]);
 
         currTimeSlotId += 1;
     }

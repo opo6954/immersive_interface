@@ -18,7 +18,7 @@ namespace Tasc
         {
             base.Initialize();
         }
-
+         
         public override string ToString()
         {
             return base.ToString() + " : Value (" + (isPushed)+")";

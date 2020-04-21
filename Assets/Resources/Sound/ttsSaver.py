@@ -1,7 +1,7 @@
 from gtts import gTTS
 
 
-T1_answer = ['3', '보라', '동', '1', '1', '초록', '북서', '1']
+T1_answer = ['3', '보라', '동', '1', '1', '초록', '북서', '3']
 T2_answer = ['파란', '2', '남', '4', '3', '빨간', '2', '남동']
 T3_answer = ['3', '3', '노란', '남서', '1', '2', '서', '주황']
 T4_answer = ['초록', '동', '1', '1', '남서', '2', '2', '빨간']
@@ -40,7 +40,7 @@ def generateButton(value):
     return '6개의 버튼 중 %s 색 버튼을 누르세요   ' % value
 def generateWheel(value):
     value = str(value)
-    return '휠을 시계 방향으로 %d 바퀴를 돌리세요   ' % value
+    return '휠을 시계 방향으로 %s 바퀴를 돌리세요   ' % value
 
 saveTTS('T1_intro', generateIntro(1))
 saveTTS('T2_intro', generateIntro(2))
@@ -55,8 +55,8 @@ saveTTS('T4_ontro', generateOutro(4))
 print("Done on outro")
 
 
-for i in range(4):
-    for j in range(8):
+for i in range(len(T_answer)):
+    for j in range(len(T_order[0])):
         fileName = 'T' + str(i+1) + '_' + 'sub' + str(j+1)
 
         generateFunc = None
@@ -70,8 +70,7 @@ for i in range(4):
         elif(orderIdx == 2):
             generateFunc = generateJoystick
         else:
-            generateFunc = generateLever
-
+            generateFunc = generateWheel
         saveTTS(fileName, str(j+1) + '번 순서입니다.   ' + generateFunc(T_answer[i][j]))
     print('Done on Group' + str(i+1))
 

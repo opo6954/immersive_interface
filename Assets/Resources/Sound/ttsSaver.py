@@ -4,17 +4,19 @@ from gtts import gTTS
 T1_answer = ['3', '보라', '동', '1', '1', '초록', '북서', '1']
 T2_answer = ['파란', '2', '남', '4', '3', '빨간', '2', '남동']
 T3_answer = ['3', '3', '노란', '남서', '1', '2', '서', '주황']
+T4_answer = ['초록', '동', '1', '1', '남서', '2', '2', '빨간']
 
 
-T_answer = [T1_answer, T2_answer, T3_answer]
+T_answer = [T1_answer, T2_answer, T3_answer, T4_answer]
 
 deviceOrderList = ['Lever', 'Button', 'Joystick', 'Wheel']
 
 T1_order = [0,1,2,0,3,1,2,3]
 T2_order = [1,3,2,3,0,1,0,2]
 T3_order = [3,0,1,2,0,3,2,1]
+T4_order = [1,2,3,0,2,3,0,1]
 
-T_order = [T1_order, T2_order, T3_order]
+T_order = [T1_order, T2_order, T3_order, T4_order]
 
 
 def saveTTS(taskName, contents):
@@ -43,15 +45,17 @@ def generateWheel(value):
 saveTTS('T1_intro', generateIntro(1))
 saveTTS('T2_intro', generateIntro(2))
 saveTTS('T3_intro', generateIntro(3))
+saveTTS('T4_intro', generateIntro(4))
 print("Done on intro")
 
 saveTTS('T1_ontro', generateOutro(1))
 saveTTS('T2_ontro', generateOutro(2))
 saveTTS('T3_ontro', generateOutro(3))
+saveTTS('T4_ontro', generateOutro(4))
 print("Done on outro")
 
 
-for i in range(3):
+for i in range(4):
     for j in range(8):
         fileName = 'T' + str(i+1) + '_' + 'sub' + str(j+1)
 
